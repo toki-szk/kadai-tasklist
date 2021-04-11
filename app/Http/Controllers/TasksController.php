@@ -148,7 +148,7 @@ class TasksController extends Controller
     public function destroy($id)
     {
         // idの値でメッセージを検索して取得
-        $task = Task::findOrFail($id);
+        $task = \App\Task::findOrFail($id);
         
         if (\Auth::id() === $task->user_id) {
             // メッセージを削除
@@ -156,6 +156,6 @@ class TasksController extends Controller
         }
 
         // トップページへリダイレクトさせる
-        return redirect('/');
+        return back();
     }
 }
