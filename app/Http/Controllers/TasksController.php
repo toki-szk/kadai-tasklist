@@ -128,11 +128,9 @@ class TasksController extends Controller
         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
         
-        if (\Auth::id() === $task->user_id) {
-            $task->content = $request->content;
-            $task->status = $request->status;
-            $task->save();
-        }
+        $task->content = $request->content;
+        $task->status = $request->status;
+        $task->save();
         
         // トップページへリダイレクトさせる
         return redirect('/');
@@ -156,6 +154,6 @@ class TasksController extends Controller
         }
 
         // トップページへリダイレクトさせる
-        return back();
+        return redirect('/');
     }
 }
