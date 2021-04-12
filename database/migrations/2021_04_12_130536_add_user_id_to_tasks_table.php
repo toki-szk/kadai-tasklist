@@ -27,6 +27,7 @@ class AddUserIdToTasksTable extends Migration
      */
     public function down()
     {
+        $table->dropForeign(['user_id']);
         Schema::dropIfExists('tasks');
     }
 }
