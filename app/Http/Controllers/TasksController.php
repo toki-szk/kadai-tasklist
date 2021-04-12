@@ -64,8 +64,7 @@ class TasksController extends Controller
         
         $request->user()->tasks()->create([
             'content' => $request->content,
-            'status' => $request->status,
-            'user_id' => $request->user_id
+            'status' => $request->status
         ]);
 
         // トップページへリダイレクトさせる
@@ -132,7 +131,6 @@ class TasksController extends Controller
         if (\Auth::id() === $task->user_id) {
             $task->content = $request->content;
             $task->status = $request->status;
-            $task->user_id = $request->user_id;
             $task->save();
         }
 
