@@ -16,8 +16,7 @@ class AddUserIdToTasksTable extends Migration
         Schema::table('tasks', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             
-            // 外部キー制約
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -28,6 +27,6 @@ class AddUserIdToTasksTable extends Migration
      */
     public function down()
     {
-         Schema::dropIfExists('tasks');
+        Schema::dropIfExists('tasks');
     }
 }
